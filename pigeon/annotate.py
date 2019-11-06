@@ -1,7 +1,7 @@
 import random
 import functools
 from IPython.display import display, clear_output
-from ipywidgets import Button, Dropdown, HTML, HBox, IntSlider, FloatSlider, Textarea, Output
+from ipywidgets import Button, Dropdown, HTML, HBox, VBox, IntSlider, FloatSlider, Textarea, Output
 
 def annotate(examples,
              options=None,
@@ -128,7 +128,7 @@ def annotate(examples,
     out = Output()
     display(out)
 
-    box = HBox(buttons)
+    box = VBox(buttons)
     display(box)
 
     show_next()
