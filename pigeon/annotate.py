@@ -71,7 +71,9 @@ def annotate(examples,
     buttons = []
     
     if task_type == 'classification':
-        use_dropdown = len(options) > 5
+        # use_dropdown = len(options) > 5
+        # hardcoding dropdown to false
+        use_dropdown = False
 
         if use_dropdown:
             dd = Dropdown(options=options)
@@ -123,11 +125,11 @@ def annotate(examples,
         btn.on_click(skip)
         buttons.append(btn)
 
-    box = HBox(buttons)
-    display(box)
-
     out = Output()
     display(out)
+
+    box = HBox(buttons)
+    display(box)
 
     show_next()
 
