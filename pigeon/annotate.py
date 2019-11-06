@@ -124,7 +124,7 @@ def annotate(examples,
         buttons.append(btn)
 
     if include_skip:
-        btn = Button(description='skip')
+        btn = Button(description='skip', button_style='warning')
         btn.on_click(skip)
         buttons.append(btn)
 
