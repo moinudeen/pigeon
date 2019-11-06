@@ -1,7 +1,7 @@
 import random
 import functools
 from IPython.display import display, clear_output
-from ipywidgets import Button, Dropdown, HTML, HBox, VBox, IntSlider, FloatSlider, Textarea, Output
+from ipywidgets import Button, Dropdown, HTML, HBox, VBox, IntSlider, FloatSlider, Textarea, Output, Layout
 
 def annotate(examples,
              options=None,
@@ -54,6 +54,9 @@ def annotate(examples,
     def skip(btn):
         show_next()
 
+    def create_expanded_button(description, button_style):
+        return Button(description=description, button_style=button_style, layout=Layout(height='auto', width='auto'))
+
     annotations = []
     non_local = {"current_index" : -1, "count_label" : HTML()}
     set_label_text()
@@ -78,7 +81,7 @@ def annotate(examples,
         if use_dropdown:
             dd = Dropdown(options=options)
             display(dd)
-            btn = Button(description='submit')
+            btn = create_expanded_button('submit', 'success')
             def on_click(btn):
                 add_annotation(dd.value)
             btn.on_click(on_click)
@@ -86,7 +89,7 @@ def annotate(examples,
         
         else:
             for label in options:
-                btn = Button(description=label)
+                btn = create_expanded_button(label, 'info')
                 def on_click(label, btn):
                     add_annotation(label)
                 btn.on_click(functools.partial(on_click, label))
